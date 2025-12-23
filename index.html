@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Click Mee</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 100px;
+    }
+
+    #waste-button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 16px;
+      background-color: #1f1f1f;
+      color: #00ffcc;
+      border: 2px solid #00ffcc;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #waste-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome</h1>
+  <button id="waste-button">Click Me</button>
+
+  <script>
+    const button = document.getElementById('waste-button');
+
+    button.addEventListener('click', () => {
+      button.disabled = true;
+      let timeLeft = 10;
+
+      const interval = setInterval(() => {
+        button.textContent = `Please wait... (${timeLeft})`;
+        timeLeft--;
+
+        if (timeLeft < 0) {
+          clearInterval(interval);
+          alert("Congratulations Deeksha!! You have successfully wasted 10 seconds of your life");
+          button.textContent = "Click Me";
+          button.disabled = false;
+        }
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>
+
